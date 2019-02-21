@@ -49,7 +49,24 @@ h1 {
 */
 /*    background-color: beige;*/
 }
-
+.head {
+    width: 200px;
+    height: 200px;
+/*    background: url(https://www.elementhealing.com/wp-content/uploads/Human-Body-Outline-Drawing-Coloring-Pages.jpg);*/
+    background-color: lightseagreen;
+    background: url(./uploads/head.svg) no-repeat center;
+    -webkit-clip-path: ellipse(10% 9% at 51% 12%);
+    clip-path: ellipse(40% 100% at 60% 12%);
+}
+.torso {
+    width: 200px;
+    height: 200px;;
+/*    background: url(https://www.elementhealing.com/wp-content/uploads/Human-Body-Outline-Drawing-Coloring-Pages.jpg);*/
+    background-color: lightseagreen;
+    background: url(./uploads/torso.svg) no-repeat center;
+    -webkit-clip-path: ellipse(10% 9% at 51% 12%);
+    clip-path: ellipse(40% 100% at 60% 12%);
+}
 .symbol {
     grid-area: 1 / 1 / 2 / 7;
 /*    background-color: aquamarine;*/
