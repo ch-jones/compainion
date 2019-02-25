@@ -8,7 +8,7 @@ const app = new Vue({
             title: 'No Pain',
             text: 'I have no pain.',
             emoji: '😀',
-            color: '#fafafa'
+            color: '#fafafa',
         }, {
             id: 1,
             title: 'Minimal Pain',
@@ -68,7 +68,7 @@ const app = new Vue({
             title: 'Unable to Move',
             text: 'I am in bed and can’t move due to my pain. I need someone to take me to the emergency room to get help for my pain.',
             emoji: '🤮',
-            color: '#ff5722'
+            color: '#d84315'
         }]
 
     }

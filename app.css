@@ -1,6 +1,5 @@
 html,
 body {
-    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -11,6 +10,7 @@ body {
     /*    background-color: aquamarine;*/
     
 }
+
 .nav {
     width: 100%;
     height: 4vh;
@@ -18,11 +18,13 @@ body {
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
     z-index: 2;
 }
+
 h1 {
     font-family: 'Rubik', sans-serif;
     font-size: 5rem;
     line-height: 0;
 }
+
 #app {
 /*    height: 100%;*/
 /*    z-index: 1;*/
@@ -49,24 +51,7 @@ h1 {
 */
 /*    background-color: beige;*/
 }
-.head {
-    width: 200px;
-    height: 200px;
-/*    background: url(https://www.elementhealing.com/wp-content/uploads/Human-Body-Outline-Drawing-Coloring-Pages.jpg);*/
-    background-color: lightseagreen;
-    background: url(./uploads/head.svg) no-repeat center;
-    -webkit-clip-path: ellipse(10% 9% at 51% 12%);
-    clip-path: ellipse(40% 100% at 60% 12%);
-}
-.torso {
-    width: 200px;
-    height: 200px;;
-/*    background: url(https://www.elementhealing.com/wp-content/uploads/Human-Body-Outline-Drawing-Coloring-Pages.jpg);*/
-    background-color: lightseagreen;
-    background: url(./uploads/torso.svg) no-repeat center;
-    -webkit-clip-path: ellipse(10% 9% at 51% 12%);
-    clip-path: ellipse(40% 100% at 60% 12%);
-}
+
 .symbol {
     grid-area: 1 / 1 / 2 / 7;
 /*    background-color: aquamarine;*/
@@ -98,3 +83,22 @@ h1 {
 .p {
     max-width: 300px;
 }
+
+#humanBody {
+/*
+    width: 100vw;
+    height: 100vh;
+*/
+/*    position: absolute;*/
+    margin: 0 auto;
+}
+
+/*
+#humanBody::before {
+    position: absolute;
+    content: '';
+    background: url('/uploads/humanBody.png') no-repeat;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}*/
