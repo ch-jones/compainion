@@ -8,15 +8,34 @@ body {
     height: 100vh;
     font-family: 'Work Sans', sans-serif;
     /*    background-color: aquamarine;*/
-    
+
 }
 
-.nav {
+.top-nav {
     width: 100%;
-    height: 4vh;
+    /*    height: 4vh;*/
     background: #FFD54F;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
     z-index: 2;
+    overflow: auto;
+}
+
+.top-nav a {
+    float: left;
+    width: 20%;
+    text-align: center;
+    padding: 12px 0;
+    transition: all 0.7s ease;
+    color: #3e3e3e;
+    font-size: 36px;
+}
+
+.top-nav a:hover {
+    background-color: #FFF176;
+}
+
+.active {
+    background-color: #FFA726;
 }
 
 h1 {
@@ -26,8 +45,8 @@ h1 {
 }
 
 #app {
-/*    height: 100%;*/
-/*    z-index: 1;*/
+    /*    height: 100%;*/
+    /*    z-index: 1;*/
     background-color: #fafafa;
     -webkit-transition: background-color 0.7s ease-out;
     -moz-transition: background-color 0.7s ease-out;
@@ -40,21 +59,21 @@ h1 {
     display: grid;
     grid-template: 2fr repeat(4, 1fr) / repeat(6, 1fr);
     margin: 0 auto;
-/*    width: 50%;*/
+    /*    width: 50%;*/
     text-align: center;
     padding: 1%;
     position: relative;
-/*    top: 30%;*/
+    /*    top: 30%;*/
     /*
     -ms-transform: translateY(-30%);
     transform: translateY(-30%);
 */
-/*    background-color: beige;*/
+    /*    background-color: beige;*/
 }
 
 .symbol {
     grid-area: 1 / 1 / 2 / 7;
-/*    background-color: aquamarine;*/
+    /*    background-color: aquamarine;*/
     /*    grid-column: 2 / 5;*/
 }
 
@@ -67,17 +86,17 @@ h1 {
 
 .value {
     grid-area: 2 / 1 / 3 / 7;
-/*    background-color: lightseagreen;*/
+    /*    background-color: lightseagreen;*/
 }
 
 .slider {
     grid-column: 2 / 6;
-/*    width: 100%;*/
+    /*    width: 100%;*/
 }
 
 .desc {
     grid-area: 4 / 1 / 7 / 7;
-/*    background-color: lightcoral;*/
+    /*    background-color: lightcoral;*/
 }
 
 .p {
@@ -85,11 +104,11 @@ h1 {
 }
 
 #humanBody {
-/*
+    /*
     width: 100vw;
     height: 100vh;
 */
-/*    position: absolute;*/
+    /*    position: absolute;*/
     margin: 0 auto;
 }
 
@@ -102,3 +121,22 @@ h1 {
     height: 100%;
     pointer-events: none;
 }*/
+
+@media(max-width: 600px) {
+    .top-nav {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .top-nav a {
+        float: left;
+        width: 20%;
+        text-align: center;
+        padding: 12px 0;
+        transition: all 0.3s ease;
+        font-size: 36px;
+    }
+}

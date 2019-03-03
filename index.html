@@ -7,13 +7,20 @@
     <title></title>
     <link rel="stylesheet" href="app.css">
     <link href="https://fonts.googleapis.com/css?family=Rubik:700|Work+Sans:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="js/vue.js"></script>
 </head>
 
 <body>
 
     <div id="app" v-bind:style="{ backgroundColor: painLvls[myValue].color }">
-            <div class="nav"></div>
+        <div class="top-nav">
+            <a class="active" href="index.html"><i class="fa fa-home"></i></a>
+            <a href="#"><i class="fas fa-sliders-h"></i></a>
+            <a href="#"><i class="fas fa-chart-bar"></i></a>
+            <a href="#"><i class="fas fa-clock"></i></a>
+            <a href="#"><i class="fas fa-cog"></i></a>
+        </div>
         <div class="container" id="painMeasure">
             <div class="symbol">
                 <h1 class="emoji">{{ painLvls[myValue].emoji }}</h1>
@@ -26,7 +33,7 @@
                 <h2>{{ painLvls[myValue].title }}</h2>
                 <p>{{ painLvls[myValue].text }}</p>
             </div>
-                        <button v-on:click="">Save Pain Level</button>
+<!--            <button v-on:click="">Save Pain Level</button>-->
         </div>
 
     </div>

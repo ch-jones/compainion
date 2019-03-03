@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:700|Work+Sans:400,500" rel="stylesheet">
+    <script src="js/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+    <script src="./js/p5.dom.js"></script>
+    <!--    <script src="./js/sketch.js"></script>-->
+    <style>
+        html,
+        body {
+            /*            height: 100%;*/
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+
+            /* This centers our sketch horizontally. */
+            justify-content: center;
+
+            /* This centers our sketch vertically. */
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <!--    <div class="nav"></div>-->
+    <div id='humanBody'></div>
+
+    <script src="./js/app.js"></script>
+    <script>
+        let increase = false;
+        var x = 0;
+        let diameter = x;
+        let front = true;
+        let val = 0;
+        let emoji = "😀";
+        let photo, maskImage, button, painSlider;
+
+        function preload() {
+            //photo = loadImage('uploads/potato.jpg');
+            maskImage = loadImage('uploads/body-front.png');
+            //maskImage = loadImage('uploads/body-back.png');
+        }
+
+        function setup() {
+            //create canvas
+            var myCanvas = createCanvas(320, 560);
+            textSize(32);
+            
+            //assign sketch to specifc div element
+            myCanvas.parent('humanBody');
+
+            //    button = createButton('Change View');
+            //    button.position(width / 2, 65);
+            
+            painSlider = createSlider(0, 10, 0);
+
+        }
+
+        function draw() {
+            val = painSlider.value();
+            if (val === "0") {
+                emoji = '😀';
+            } else if (val === "1") {
+                emoji = '🙂';
+            }
+            
+            //draw body mask over repeatedly
+            image(maskImage, 0, 0);
+        }
+
+        function mousePressed() {
+            text(emoji, mouseX, mouseY);
+            // prevent default
+            return false;
+            
+//            if (val === 0) {
+//                emoji = '😀';
+//            } else if (val === 1) {
+//                emoji = '🙂';
+//            }
+            console.log(val);
+        }
+
+
+//        function mouseReleased() {
+//            increase = false;
+//            x = 0;
+//            console.log(increase);
+//        }
+                function mouseReleased() {
+            console.log("slider value: " + val);
+        }
+    </script>
+</body>
+
+</html>
