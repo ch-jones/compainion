@@ -1,8 +1,38 @@
 const app = new Vue({
     el: '#app',
     data: {
+//        user: [
+//            { firstName: 'Darnell' },
+//            { lastName: 'Williams' }
+//        ],
+        userInfo: [
+            { firstName: 'Darnell' },
+            { lastName: 'Williams' }
+        ],
+        newTimer: '',
+        newMedication: '',
+        newDose: '',
+        newDosage: '',
+        medications: [{
+            name: 'Acetaminophen',
+            dose: '500 mg tablet',
+            timer: 4,
+            dosage: '2 caplets every 4-6 hours while symptoms last',
+            checked: false,
+        }, {
+            name: 'Oxycodone',
+            dose: '9 mg tablet',
+            timer: 5,
+            dosage: '1 tablet every 5-6 hours as needed',
+            checked: false,
+        }, {
+            name: 'Amoxicillin',
+            dose: '2000 mg tablet',
+            timer: 12,
+            doseage: '1 tablet every 12 hours',
+            checked: false
+        }],
         myValue: 0,
-        name: 'Caleb',
         painLvls: [{
             id: 0,
             title: 'No Pain',
@@ -71,6 +101,27 @@ const app = new Vue({
             color: '#d84315'
         }]
 
+    },
+    methods: {
+        addTimer: function() {
+            var timer   = this.newTimer;
+            var name    = this.newMedication.trim();
+            var dose    = this.newDose.trim();
+            var dosage  = this.newDosage.trim();
+            if (name) {
+                this.medications.push({
+                    timer: timer,
+                    name: name,
+                    dose: dose,
+                    dosage: dosage,
+                    checked: false
+                });
+                this.newTimer       = '';
+                this.newMedication  = '';
+                this.dose           = '';
+                this.dosage         = '';
+            }
+        }
     }
 });
 

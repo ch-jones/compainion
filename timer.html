@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>compainion - Personal Pain Companion</title>
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:700|Work+Sans:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Vue.JS libraries and scripts -->
+    <script src="./js/vue.js" defer></script>
+    <script src="./js/app.js" defer></script>
+</head>
+
+<body>
+
+    <div id="app" v-bind:style="{ backgroundColor: painLvls[myValue].color }">
+        <div class="top-nav">
+            <a href="index.html"><i class="fa fa-home"></i></a>
+            <a href="body-painmap.html"><i class="fas fa-comment-medical"></i></a>
+            <a href="#"><i class="fas fa-chart-bar"></i></a>
+            <a class="active" href="timer.html"><i class="fas fa-clock"></i></a>
+            <a href="#"><i class="fas fa-cog"></i></a>
+        </div>
+        <div class="container">
+            <div class="heading">
+                <h1>Timer</h1>
+            </div>
+
+            <div class="input-group">
+                <button @click="addTimer"><i class="fas fa-plus"></i></button>
+                <input v-model="newTimer" placeholder="timer hours" type="number" required>
+                <input v-model="newMedication" placeholder="Medication" type="text" required>
+                <input v-model="newDose" placeholder="Dose" type="text">
+                <input v-model="newDosage" placeholder="Directions" type="text">
+            </div>
+            <div id="timers">
+                <table >
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Countdown</th>
+                            <th>Medication</th>
+                            <th>Dose</th>
+                            <th>Directions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="medication in medications">
+                            <td><input type="checkbox" v-model="medication.checked"> {{ medication.text }}</td>
+                            <td>{{ medication.timer }} hours</td>
+                            <td>{{ medication.name }}</td>
+                            <td>{{ medication.dose }}</td>
+                            <td>{{ medication.dosage }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--
+            <ul>
+            <li v-for="medication in medications" :class="{ 'removed': medication.checked }"> 
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" v-model="medication.checked"> {{ medication.name }}
+                    </label>
+                </div>
+            </li>
+        </ul>
+-->
+
+        </div>
+    </div>
+
+    <!--
+    <div id="app2">
+        <div class="container">
+            <h1>Your Medications</h1>
+            <ul>
+                <li v-for="medication in medications">{{ medication.name }}</li>
+            </ul>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Dosage</th>
+                    <th>Quantity</th>
+                    <th>Refills</th>
+                </thead>
+                <tbody>
+                    <td v-for="medication in medications">
+                        <tr>{{ medication.name }}</tr>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+-->
+
+</body>
+
+</html>

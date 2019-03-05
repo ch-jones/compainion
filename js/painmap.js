@@ -12,11 +12,14 @@ function preload() {
 
 function setup() {
     //create canvas
-    var myCanvas = createCanvas(320, 560);
+    var myCanvas = createCanvas(195, 546);
     myCanvas.parent('humanBody');
 
-    //    button = createButton('Change View');
-    //    button.position(width / 2, 65);
+    //saveCanvas('myCanvas', 'png');
+
+    //select button and connect downloadPainMap function
+    button = select('#savePainMap');
+    button.mousePressed(downloadPainMap);
 }
 
 function draw() {
@@ -37,7 +40,6 @@ function draw() {
 function mouseReleased() {
     increase = false;
     x = 0;
-    console.log(increase);
 }
 
 function circles() {
@@ -97,4 +99,9 @@ function toggleView() {
         maskImage = loadImage('uploads/body-back.png');
         front = true;
     }
+}
+
+function downloadPainMap() {
+    var timestamp = new Date();
+    saveCanvas('Body Pain Map ' + timestamp, 'png');
 }
