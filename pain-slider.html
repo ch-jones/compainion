@@ -16,25 +16,27 @@
     <div id="app" v-bind:style="{ backgroundColor: painLvls[myValue].color }">
         <div class="top-nav">
             <a href="index.html"><i class="fa fa-home"></i></a>
-            <a href="#"><i class="fas fa-comment-medical"></i></a>
+            <a href="body-painmap.html"><i class="fas fa-comment-medical"></i></a>
             <a class="active" href="pain-slider.html"><i class="fas fa-chart-bar"></i></a>
             <a href="timer.html"><i class="fas fa-clock"></i></a>
             <a href="#"><i class="fas fa-cog"></i></a>
         </div>
-        <div class="container" id="painMeasure">
-            <div class="symbol">
+        <div class="container">
+            <div>
+            <div class="symbol lg-12 small-1">
                 <h1 class="emoji">{{ painLvls[myValue].emoji }}</h1>
             </div>
-            <input class="slider" type="range" min="0" max="10" step="1" value="5" v-model="myValue">
-            <div class="value">
+            <input class="slider lg-12 small-1" type="range" min="0" max="10" step="1" value="5" v-model="myValue">
+            <div class="value lg-12 small-1">
                 <h1>{{ myValue }}</h1>
             </div>
-            <div class="desc">
+            <div class="desc lg-12 small-1">
                 <h2>{{ painLvls[myValue].title }}</h2>
                 <p>{{ painLvls[myValue].text }}</p>
             </div>
 <!--            <button v-on:click="">Save Pain Level</button>-->
         </div>
+            
 
     </div>
     <!--

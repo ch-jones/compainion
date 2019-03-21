@@ -5,7 +5,7 @@ let front = true;
 let photo, maskImage, button;
 
 function preload() {
-    //photo = loadImage('uploads/potato.jpg');
+    //preload the body image
     maskImage = loadImage('uploads/body-front.png');
     //maskImage = loadImage('uploads/body-back.png');
 }
@@ -15,15 +15,15 @@ function setup() {
     var myCanvas = createCanvas(195, 546);
     myCanvas.parent('humanBody');
 
-    //saveCanvas('myCanvas', 'png');
-
-    //select button and connect downloadPainMap function
+    //select button from DOM and assign downloadPainMap function
     button = select('#savePainMap');
     button.mousePressed(downloadPainMap);
 }
 
 function draw() {
     //button.mousePressed(toggleView);
+    
+    //draw pain circles when mouse is pressed
     if (mouseIsPressed === true) {
         increase = true;
         if (increase == true) {
@@ -33,11 +33,12 @@ function draw() {
         circles();
     }
 
-    //draw mask over repeatedly
+    //draw body mask over repeatedly
     image(maskImage, 0, 0);
 }
 
 function mouseReleased() {
+    //reset x timer and increase when mouse is released
     increase = false;
     x = 0;
 }
@@ -103,5 +104,6 @@ function toggleView() {
 
 function downloadPainMap() {
     var timestamp = new Date();
+    //save pain map as png with timestamp in filename
     saveCanvas('Body Pain Map ' + timestamp, 'png');
 }
