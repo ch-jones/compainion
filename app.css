@@ -6,15 +6,15 @@ body {
 }
 
 body {
-    height: 100vh;
+/*    height: 100vh;*/
     font-family: 'Work Sans', sans-serif;
     background-color: #FAFAFA;
 }
 
 #app {
-/*        height: 100%;*/
+    /*        height: 100%;*/
     /*    z-index: 1;*/
-/*    background-color: #fafafa;*/
+    /*    background-color: #fafafa;*/
     -webkit-transition: background-color 0.7s ease-out;
     -moz-transition: background-color 0.7s ease-out;
     -o-transition: background-color 0.7s ease-out;
@@ -29,11 +29,12 @@ body {
     grid-row-gap: 1.5rem;
     margin: 0 auto;
     margin-top: 60px;
-/*        width: 50%;*/
+    /*        width: 50%;*/
     padding: 1%;
-/*    position: relative;*/
+    /*    position: relative;*/
     justify-items: center;
 }
+
 .lg-12 {
     grid-column: 1 / 13;
 }
@@ -55,16 +56,18 @@ button {
 
 button:active {
     background-color: #FFA726;
-/*    box-shadow: inset 0 1px 4px rgba(62, 62, 62, 0.25);*/
-/*    border: solid 1px #3e3e3e;*/
+    /*    box-shadow: inset 0 1px 4px rgba(62, 62, 62, 0.25);*/
+    /*    border: solid 1px #3e3e3e;*/
 }
 
 button:hover {
     background-color: #FFA726;
 }
+
 #savePainMap i {
     margin-right: 0.5rem;
 }
+
 .profile {
     grid-column: 4 / span 6;
     grid-row: 4 / span 6;
@@ -78,8 +81,6 @@ button:hover {
 /* Nav Bar Styles */
 .top-nav {
     width: 100%;
-/*    height: 60px;*/
-    /*    height: 4vh;*/
     background: #616161;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
     z-index: 2;
@@ -95,59 +96,53 @@ button:hover {
     text-align: center;
     color: #FAFAFA;
     font-size: 36px;
-/*    transition: all 0.7s ease;*/
-    display: inline-block;
 }
 
-/* Martin Wolf tutorial
-.top-nav a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0.4rem;
-    margin-top: 2px;
-    background: #000;
-    transition: width 0.5s;
-}
-
-.top-nav a:hover::after {
-    width: 100%;
-    transition: width 0.5s;
-}
-*/
-.top-nav a:after{
-    content: '';
-    position: absolute;
-    border-bottom: 5px solid #000;
-    bottom: 0;
-    left: 0;
-    right: 100%;
-    transition: all 500ms;
-}
-.top-nav a:hover:after {
-    right: 0;
-}
 .top-nav a:hover {
     background-color: #8e8e8e;
+}
+
+.underline-animation {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    /*
+            color: #000;
+            text-decoration: none;
+*/
+}
+
+.underline-animation::after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    bottom: 0;
+    height: 0.3rem;
+    background: #000;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+}
+
+.underline-animation:hover::after {
+    transform: translateX(0);
 }
 
 .active {
     background-color: #1b1b1b;
 }
-.active:after {
-    content: '';
-/* Martin Wolf tutorial
-    display: block;
-    width: 100%;
-    height: 0.4rem;
-    background: #fafafa;
-*/
+
+/*
+.active::after {
     position: absolute;
-    border-bottom: 5px solid #FAFAFA;
+    display: block;
+    content: '';
+    width: 100%;
     bottom: 0;
-    left: 0;
-    right: 100%;
+    height: 0.25rem;
+    background: #ffffff;
 }
+*/
 
 h1 {
     font-family: 'Rubik', sans-serif;
@@ -167,14 +162,15 @@ h1 {
     grid-column: 4 / span 6;
     grid-row-start: 2;
 }
+
 #savePainMap {
-/*    grid-row-start: 3;*/
-/*    grid-column: 1 / 13;*/
+    /*    grid-row-start: 3;*/
+    /*    grid-column: 1 / 13;*/
 }
 
 
 .symbol {
-/*    grid-area: 1 / 1 / 2 / 7;*/
+    /*    grid-area: 1 / 1 / 2 / 7;*/
     /*    background-color: aquamarine;*/
     /*    grid-column: 2 / 5;*/
 }
@@ -187,17 +183,17 @@ h1 {
 }
 
 .value {
-/*    grid-area: 2 / 1 / 3 / 7;*/
+    /*    grid-area: 2 / 1 / 3 / 7;*/
     /*    background-color: lightseagreen;*/
 }
 
 .slider {
-/*    grid-column: 2 / span 10;*/
-/*    width: 700%;*/
+    /*    grid-column: 2 / span 10;*/
+    /*    width: 700%;*/
 }
 
 .desc {
-/*    grid-area: 4 / 1 / 7 / 7;*/
+    /*    grid-area: 4 / 1 / 7 / 7;*/
     /*    background-color: lightcoral;*/
 }
 
@@ -207,7 +203,7 @@ h1 {
 
 /* Timer Styles */
 .input-group {
-/*    grid-column: 1 / 13;*/
+    /*    grid-column: 1 / 13;*/
 }
 
 .input-group input {
@@ -216,6 +212,7 @@ h1 {
     padding: 1rem 1rem;
     border-radius: 9px;
 }
+
 .input-group button {
     border-radius: 100%;
     width: 50px;
@@ -225,14 +222,17 @@ h1 {
 
 #timers {
     grid-column: 1 / 13;
-/*    width: auto;*/
+    /*    width: auto;*/
 }
 
 #timers table {
-  border: 1px solid black;
-  border-collapse: collapse;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
-table, th, td {
+
+table,
+th,
+td {
     padding: 15px;
     border: 1px solid black;
 }
@@ -241,17 +241,20 @@ table, th, td {
     .container {
         display: grid;
         grid-template: auto / 1fr;
+        grid-row-gap: 1rem;
         margin: 0 auto;
-        /*    width: 50%;*/
-        padding: 1%;
-        padding-top: 15px;
+        width: 100vw;
+/*        padding: 1%;*/
+/*        padding-top: 15px;*/
         position: relative;
         margin-top: 0;
     }
-    
+
     .small-1 {
         grid-column: 1 / 2;
     }
+
+    /* Nav Bar Styles */
     .top-nav {
         width: 100%;
         height: auto;
@@ -269,8 +272,22 @@ table, th, td {
         transition: all 0.3s ease;
         font-size: 36px;
     }
-    
-    .heading, .profile, #humanBody {
+
+    .underline-animation::after {
+        position: absolute;
+        display: block;
+        content: '';
+        width: 100%;
+        top: 0;
+        height: 0.3rem;
+        background: #000;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+
+    .heading,
+    .profile,
+    #humanBody {
         grid-column: 1 / 2;
         grid-row: auto;
     }

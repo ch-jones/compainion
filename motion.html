@@ -4,8 +4,33 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Compainion - Personal Pain Companion</title>
+
+    <!-- generic favicons -->
+    <link rel="icon" href="./uploads/favicons/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="./uploads/favicons/favicon-57.png" sizes="57x57">
+    <link rel="icon" href="./uploads/favicons/favicon-76.png" sizes="76x76">
+    <link rel="icon" href="./uploads/favicons/favicon-96.png" sizes="96x96">
+    <link rel="icon" href="./uploads/favicons/favicon-128.png" sizes="128x128">
+    <link rel="icon" href="./uploads/favicons/favicon-192.png" sizes="192x192">
+    <link rel="icon" href="./uploads/favicons/favicon-228.png" sizes="228x228">
+
+    <!-- Android favicons -->
+    <link rel="shortcut icon" sizes="196x196" href="./uploads/favicons/favicon-196.png">
+
+    <!-- iOS favicons -->
+    <link rel="apple-touch-icon" href="./uploads/favicons/favicon-120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="./uploads/favicons/favicon-152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="./uploads/favicons/favicon-180.png" sizes="180x180">
+    
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:700|Work+Sans:400,500" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    
+    <!-- Vue.JS libraries and scripts -->
+    <script src="js/vue.js" defer></script>
+    <script src="js/app.js" defer></script>
+    
     <style>
         body,
         html {
@@ -36,7 +61,7 @@
             background-color: #8e8e8e;
         }
 
-        .cool-link {
+        .underline-animation {
             position: relative;
             overflow: hidden;
             display: inline-block;
@@ -46,7 +71,7 @@
 */
         }
 
-        .cool-link::after {
+        .underline-animation::after {
             position: absolute;
             display: block;
             content: '';
@@ -58,8 +83,12 @@
             transition: transform 0.3s;
         }
 
-        .cool-link:hover::after {
+        .underline-animation:hover::after {
             transform: translateX(0);
+        }
+
+        .active .underline-animation:hover::after {
+            transform: none;
         }
 
         .active {
@@ -110,7 +139,7 @@
                 font-size: 36px;
             }
 
-            .cool-link::after {
+            .underline-animation::after {
                 position: absolute;
                 display: block;
                 content: '';
@@ -133,14 +162,14 @@
 </head>
 
 <body>
-    <div class="top-nav">
-        <a class="active cool-link" href="index.html"><i class="fa fa-home"></i></a>
-        <a href="body-painmap.html" class="cool-link"><i class="fas fa-comment-medical"></i></a>
-        <a href="pain-slider.html" class="cool-link"><i class="fas fa-chart-bar"></i></a>
-        <a href="timer.html" class="cool-link"><i class="fas fa-clock"></i></a>
-        <a href="#" class="cool-link"><i class="fas fa-cog"></i></a>
+    <div id="app">
+        <div class="top-nav">
+            <a class="active underline-animation" href="index.html"><i class="fa fa-home"></i></a>
+            <a href="body-painmap.html" class="underline-animation"><i class="fas fa-comment-medical"></i></a>
+            <a href="pain-slider.html" class="underline-animation"><i class="fas fa-chart-bar"></i></a>
+            <a href="timer.html" class="underline-animation"><i class="fas fa-clock"></i></a>
+            <a href="#" class="underline-animation"><i class="fas fa-cog"></i></a>
+        </div>
     </div>
     <script src=""></script>
-</body>
-
-</html>
+</body></html>
