@@ -1,3 +1,22 @@
+function myFunction() {
+  var x = document.getElementById("topnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.body.style.backgroundColor = "white";
+}
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -124,17 +143,3 @@ const app = new Vue({
         }
     }
 });
-
-//const app2 = new Vue({
-//   el: "#app2",
-//    data: {
-//        medications: [{
-//            id: 0,
-//            name: 'ibuprofen'
-//        }, {
-//            id: 1,
-//            name: 'oxycodone'
-//        }]
-//    }
-//    
-//});

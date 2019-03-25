@@ -33,6 +33,62 @@
     <!-- Vue.JS libraries and scripts -->
     <script src="js/vue.js" defer></script>
     <script src="js/app.js" defer></script>
+
+    <style>
+        body {
+/*            font-family: "Lato", sans-serif;*/
+            transition: background-color 0.5s;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -45,16 +101,16 @@
             <a href="timer.html"><i class="fas fa-clock"></i></a>
             <a href="#"><i class="fas fa-cog"></i></a>
         </div> -->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a class="active" href="index.html"><i class="fa fa-home"></i></a>
+            <a href="body-painmap.html"><i class="fas fa-comment-medical"></i></a>
+            <a href="pain-slider.html"><i class="fas fa-chart-bar"></i></a>
+            <a href="timer.html"><i class="fas fa-clock"></i></a>
+            <a href="#"><i class="fas fa-cog"></i></a>
+        </div>
         <div class="topnav" id="topnav">
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-            <a class="active" href="index.html"><i class="fa fa-home"></i>Home</a>
-            <a href="body-painmap.html"><i class="fas fa-comment-medical"></i>Ratings</a>
-            <a href="pain-slider.html"><i class="fas fa-chart-bar"></i>History</a>
-            <a href="timer.html"><i class="fas fa-clock"></i>Reminders</a>
-            <a href="#"><i class="fas fa-cog"></i>Settings</a>
-            
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Compainion</span>
         </div>
         <div class="container">
             <div class="profile">
@@ -64,28 +120,5 @@
             </div>
         </div>
     </div>
-    <!--
-    <div id="app2">
-        <div class="container">
-            <h1>Your Medications</h1>
-            <ul>
-                <li v-for="medication in medications">{{ medication.name }}</li>
-            </ul>
-            <table>
-                <thead>
-                    <th>Name</th>
-                    <th>Dosage</th>
-                    <th>Quantity</th>
-                    <th>Refills</th>
-                </thead>
-                <tbody>
-                    <td v-for="medication in medications">
-                        <tr>{{ medication.name }}</tr>
-                    </td>
-                </tbody>
-            </table>
-        </div>
-    </div>
--->
 
 </body></html>
