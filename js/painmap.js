@@ -1,6 +1,5 @@
 let increase = false;
-var x = 0;
-let diameter = x;
+let val;
 let front = true;
 let photo, maskImage, button;
 
@@ -12,23 +11,26 @@ function preload() {
 
 function setup() {
     //create canvas
-    var myCanvas = createCanvas(195, 546);
+    var myCanvas = createCanvas(147, 412);
     myCanvas.parent('humanBody');
 
     //select button from DOM and assign downloadPainMap function
     button = select('#savePainMap');
     button.mousePressed(downloadPainMap);
+    
+    slider = select('#color-slider');
 }
 
 function draw() {
     //button.mousePressed(toggleView);
     
+    val = slider.value();
+    //console.log(val);
+    
     //draw pain circles when mouse is pressed
     if (mouseIsPressed === true) {
-        increase = true;
-        if (increase == true) {
-            x++;
-        }
+        drawing = true;
+        
         //draw pain location circles
         circles();
     }
@@ -38,54 +40,52 @@ function draw() {
 }
 
 function mouseReleased() {
-    //reset x timer and increase when mouse is released
-    increase = false;
-    x = 0;
+    //switch drawing boolean when mouse is released
+    drawing = false;
 }
 
 function circles() {
-    if (increase === true) {
+    if (drawing === true) {
 
         //change size and fill colour based on how long mouse is pressed
-        if (x == 0) {
+        if (val == 0) {
             //level 0
             fill(250);
-        } else if (x < 9) {
+        } else if (val == 1) {
             //level 1
             fill(224, 247, 250);
-        } else if (x < 18) {
+        } else if (val == 2) {
             //level 2
             fill(232, 245, 233);
-        } else if (x < 27) {
+        } else if (val == 3) {
             //level 3
             fill(240, 244, 195);
-        } else if (x < 36) {
+        } else if (val == 4) {
             //level 4
             fill(230, 238, 156);
-        } else if (x < 45) {
+        } else if (val == 5) {
             //level 5
             fill(255, 241, 118);
-        } else if (x < 54) {
+        } else if (val == 6) {
             //level 6
             fill(255, 238, 88);
-        } else if (x < 63) {
+        } else if (val == 7) {
             //level 7
             fill(255, 213, 79);
-        } else if (x < 72) {
+        } else if (val == 8) {
             //level 8
             fill(255, 167, 38);
-        } else if (x < 81) {
+        } else if (val == 9) {
             //level 9
             fill(255, 87, 34);
-        } else if (x > 90) {
+        } else if (val == 10) {
             //level 10
             fill(216, 67, 21);
-            x--;
         }
 
         //draw circle
         noStroke();
-        ellipse(mouseX, mouseY, x, x);
+        ellipse(mouseX, mouseY, 15, 15);
     }
 }
 
