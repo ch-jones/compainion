@@ -1,6 +1,6 @@
 let drawing = false;
 let front = true;
-let y, photo, maskImage, val;
+let myCanvas, photo, maskImage, val;
 
 function preload() {
     //preload the body image
@@ -40,8 +40,6 @@ function draw() {
 
     //draw body mask over repeatedly
     image(maskImage, 0, 0);
-    
-    y++;
 }
 
 function mouseReleased() {
@@ -114,5 +112,6 @@ function downloadPainMap() {
 }
 
 function resetSketch() {
-    y = 0;
+    clear();
+    //console.log("RESET ME");
 }

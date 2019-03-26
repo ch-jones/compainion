@@ -65,7 +65,7 @@ body {
     grid-column-gap: 1rem;
     grid-row-gap: 1.5rem;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 88px;
     /*        width: 50%;*/
     /*    position: relative;*/
     justify-items: center;
@@ -84,9 +84,9 @@ button {
     font-family: 'Work Sans', sans-serif;
     font-weight: 800;
     font-size: 1rem;
-    padding: 1rem 2rem;
+    padding: 8px 16px;
     border-radius: 12px;
-    background-color: aqua;
+/*    background-color: aqua;*/
     transition: 0.5s;
 }
 
@@ -100,18 +100,19 @@ button:hover {
     background-color: #FFA726;
 }
 
-#savePainMap i {
+button i {
     margin-right: 0.5rem;
 }
 
 .profile {
     grid-column: 4 / span 6;
-    grid-row: 4 / span 6;
+/*    grid-row: 4 / span 6;*/
     text-align: center;
 }
 
 .profilePic {
     border-radius: 100%;
+    max-width: 200px;
 }
 
 h1 {
@@ -124,6 +125,10 @@ header {
     grid-column: 1 / 13;
     text-align: center;
     margin-top: 1rem;
+}
+/* Helper classes */
+.shadow {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 /* Pain Rating Page */
@@ -177,7 +182,6 @@ header {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#d84315', GradientType=1);
     /* IE6-9 */
     outline: none;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .slider::-webkit-slider-thumb {
@@ -272,8 +276,8 @@ td {
         bottom: 0;
         top: initial;
         width: 100%;
-        background-color: red;
-        color: white;
+/*        background-color: red;*/
+/*        color: white;*/
         text-align: center;
     }
 
@@ -293,7 +297,7 @@ td {
         /*        padding-top: 15px;*/
         position: relative;
         margin-top: 0;
-        margin-bottom: 86px;
+        margin-bottom: 88px;
     }
 
     .small-1 {
