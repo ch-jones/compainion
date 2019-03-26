@@ -1,7 +1,6 @@
-let increase = false;
-let val;
+let drawing = false;
 let front = true;
-let photo, maskImage, button;
+let y, photo, maskImage, val;
 
 function preload() {
     //preload the body image
@@ -14,9 +13,13 @@ function setup() {
     var myCanvas = createCanvas(147, 412);
     myCanvas.parent('humanBody');
 
-    //select button from DOM and assign downloadPainMap function
-    button = select('#savePainMap');
-    button.mousePressed(downloadPainMap);
+    //select buttons from DOM and assign functions
+    resetButton = select('#resetButton');
+    resetButton.mousePressed(resetSketch);
+    
+    saveButton = select('#savePainMap');
+    saveButton.mousePressed(downloadPainMap);
+
     
     slider = select('#color-slider');
 }
@@ -37,6 +40,8 @@ function draw() {
 
     //draw body mask over repeatedly
     image(maskImage, 0, 0);
+    
+    y++;
 }
 
 function mouseReleased() {
@@ -85,7 +90,7 @@ function circles() {
 
         //draw circle
         noStroke();
-        ellipse(mouseX, mouseY, 15, 15);
+        ellipse(mouseX, mouseY, 20, 20);
     }
 }
 
@@ -106,4 +111,8 @@ function downloadPainMap() {
     var timestamp = new Date();
     //save pain map as png with timestamp in filename
     saveCanvas('Body Pain Map ' + timestamp, 'png');
+}
+
+function resetSketch() {
+    y = 0;
 }
