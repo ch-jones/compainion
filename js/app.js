@@ -1,3 +1,8 @@
+// Define a new component called button-counter
+Vue.component('modal', {
+  template: '#modal-template'
+});
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -5,6 +10,7 @@ const app = new Vue({
 //            { firstName: 'Darnell' },
 //            { lastName: 'Williams' }
 //        ],
+        showModal: true,
         userInfo: [
             { firstName: 'Darnell' },
             { lastName: 'Williams' }

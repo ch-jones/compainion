@@ -22,6 +22,52 @@ body {
     transition: background 0.7s ease-out;
 }
 
+/* Modal Styles */
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity 0.7s ease;
+}
+
+.modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-container {
+    width: 50%;
+    min-width: 250px;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all 0.7s ease;
+}
+
+.modal-body {
+    margin: 20px 0;
+    color: #616161;
+}
+
+.modal-footer {
+    text-align: right;
+}
+
+.modal-default-button {
+/*    float: right;*/
+}
+
+.modal-default-button:hover {
+/*    background: #1b1b1b;*/
+}
+
 /* Nav Bar Styles */
 .top-nav {
     overflow: hidden;
@@ -85,19 +131,22 @@ button {
     font-weight: 800;
     font-size: 1rem;
     padding: 8px 16px;
-    border-radius: 12px;
-/*    background-color: aqua;*/
+    border-radius: 16px;
+    border: none;
+    background-color: #c7c7c7;
+    
     transition: 0.5s;
 }
 
 button:active {
-    background-color: #FFA726;
-    /*    box-shadow: inset 0 1px 4px rgba(62, 62, 62, 0.25);*/
+    background-color: #81D4FA;
+        box-shadow: inset 0 1px 4px rgba(62, 62, 62, 0.25);
     /*    border: solid 1px #3e3e3e;*/
 }
 
 button:hover {
-    background-color: #FFA726;
+    background-color: #81D4FA;
+/*    color: #FAFAFA;*/
 }
 
 button i {
@@ -106,7 +155,7 @@ button i {
 
 .profile {
     grid-column: 4 / span 6;
-/*    grid-row: 4 / span 6;*/
+    /*    grid-row: 4 / span 6;*/
     text-align: center;
 }
 
@@ -117,7 +166,7 @@ button i {
 
 h1 {
     font-family: 'Rubik', sans-serif;
-        line-height: 0.5rem;
+/*    line-height: 0.5rem;*/
 }
 
 
@@ -126,6 +175,7 @@ header {
     text-align: center;
     margin-top: 1rem;
 }
+
 /* Helper classes */
 .shadow {
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
@@ -264,6 +314,7 @@ td {
 
 
 @media(max-width: 600px) {
+
     /* Nav Bar Styles */
     .top-nav {
         /*
@@ -271,13 +322,13 @@ td {
         top: auto;
         bottom: 0;
 */
-/*        position: fixed;*/
+        /*        position: fixed;*/
         left: 0;
         bottom: 0;
         top: initial;
         width: 100%;
-/*        background-color: red;*/
-/*        color: white;*/
+        /*        background-color: red;*/
+        /*        color: white;*/
         text-align: center;
     }
 
@@ -286,7 +337,7 @@ td {
         /*        padding: 12px 0;*/
         transition: all 0.3s ease;
     }
-    
+
     .container {
         display: grid;
         grid-template: auto / 1fr;
