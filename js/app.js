@@ -1,19 +1,83 @@
-// Define a new component called button-counter
+// Define a new component called modal
 Vue.component('modal', {
-  template: '#modal-template'
+    template: '#modal-template'
 });
 
+let timerSetup = {
+    template: `
+	<form>
+		 <label for="min">Minutes<br />
+		 <input type="number" v-model="minutes" name="time_m" id="min" min="0" max="59">
+		 </label>
+		 <label for="sec">Seconds<br />
+			  <input type="number" v-model="seconds" name="time_s" id="sec" max="59" min="0">
+		 </label>
+		 <button type="button" @click="sendTime">Set time</button>
+	</form>`,
+    data() {
+        return {
+            minutes: 0,
+            seconds: 0
+        };
+
+    },
+    methods: {
+        sendTime() {
+            this.$emit('set-time', {
+                minutes: this.minutes,
+                seconds: this.seconds
+            });
+        }
+    }
+};
+
+let Timer = {
+    template: `
+		 <div class="timer">{{ time | prettify }}</div>
+	`,
+    props: ['time'],
+    filters: {
+        prettify: function (value) {
+            let data = value.split(':');
+            let minutes = data[0];
+            let seconds = data[1];
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            return minutes + ":" + seconds;
+        }
+    }
+};
+
+// Create Vue app
 const app = new Vue({
     el: '#app',
+    components: {
+        'timer-setup': timerSetup,
+        'timer': Timer
+    },
     data: {
-//        user: [
-//            { firstName: 'Darnell' },
-//            { lastName: 'Williams' }
-//        ],
-        showModal: true,
+        //        user: [
+        //            { firstName: 'Darnell' },
+        //            { lastName: 'Williams' }
+        //        ],
+        isRunning: false,
+        minutes: 0,
+        seconds: 0,
+        time: 0,
+        timer: null,
+        showModal: false,
+        stopModal: false,
         userInfo: [
-            { firstName: 'Darnell' },
-            { lastName: 'Williams' }
+            {
+                firstName: 'Darnell'
+            },
+            {
+                lastName: 'Williams'
+            }
         ],
         newTimer: '',
         newMedication: '',
@@ -106,14 +170,51 @@ const app = new Vue({
             emoji: '🤮',
             color: '#d84315'
         }]
-
     },
+
+    computed: {
+        prettyTime() {
+            let time = this.time / 60;
+            let minutes = parseInt(time);
+            let seconds = Math.round((time - minutes) * 60);
+            return minutes + ":" + seconds;
+        }
+    },
+
     methods: {
-        addTimer: function() {
-            var timer   = this.newTimer;
-            var name    = this.newMedication.trim();
-            var dose    = this.newDose.trim();
-            var dosage  = this.newDosage.trim();
+        start() {
+            this.isRunning = true;
+            if (!this.timer) {
+                this.timer = setInterval(() => {
+                    if (this.time > 0) {
+                        this.time--;
+                    } else {
+                        clearInterval(this.timer);
+                        this.sound.play();
+                        this.reset();
+                    }
+                }, 1000);
+            }
+        },
+        stop() {
+            this.isRunning = false;
+            clearInterval(this.timer);
+            this.timer = null;
+        },
+        reset() {
+            this.stop();
+            this.time = 0;
+            this.seconds = 0;
+            this.minutes = 0;
+        },
+        setTime(payload) {
+            this.time = payload.minutes * 60 + payload.seconds;
+        },
+        addTimer: function () {
+            var timer = this.newTimer;
+            var name = this.newMedication.trim();
+            var dose = this.newDose.trim();
+            var dosage = this.newDosage.trim();
             if (name) {
                 this.medications.push({
                     timer: timer,
@@ -122,25 +223,20 @@ const app = new Vue({
                     dosage: dosage,
                     checked: false
                 });
-                this.newTimer       = '';
-                this.newMedication  = '';
-                this.dose           = '';
-                this.dosage         = '';
+                this.newTimer = '';
+                this.newMedication = '';
+                this.dose = '';
+                this.dosage = '';
             }
+        }
+    },
+    mounted() {
+        if (localStorage.myValue) this.myValue = localStorage.myValue;
+    },
+
+    watch: {
+        myValue(newValue) {
+            localStorage.myValue = newValue;
         }
     }
 });
-
-//const app2 = new Vue({
-//   el: "#app2",
-//    data: {
-//        medications: [{
-//            id: 0,
-//            name: 'ibuprofen'
-//        }, {
-//            id: 1,
-//            name: 'oxycodone'
-//        }]
-//    }
-//    
-//});

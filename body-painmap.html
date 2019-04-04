@@ -85,11 +85,6 @@
 <!--            <button id="show-modal" @click="showModal = true">Show Modal</button>-->
             <!-- use the modal component, pass in the prop -->
             <modal v-if="showModal" @close="showModal = false">
-                <!--
-      you can use custom content here to overwrite
-      default content
-    -->
-
                 <h1 slot="header">Where is your pain?</h1>
                 <p slot="body">Select your pain level on the slider and draw where it hurts below.</p>
             </modal>

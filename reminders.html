@@ -46,18 +46,42 @@
         </div>
         <div class="container">
             <header>
-                <h1>Timer</h1>
+                <h1>Reminders</h1>
             </header>
 
-            <div class="input-group lg-12 small-1">
-                <button @click="addTimer"><i class="fas fa-plus"></i></button>
-                <input v-model="newTimer" placeholder="timer hours" type="number" required>
-                <input v-model="newMedication" placeholder="Medication" type="text" required>
-                <input v-model="newDose" placeholder="Dose" type="text">
-                <input v-model="newDosage" placeholder="Directions" type="text">
+            <div class="input-group">
+                <div class="time-input">
+                    <label for="hours">Hours</label>
+                        <input type="number" v-model="hours" name="time_h" id="hours" min="0" max="59" required>
+                    </div>
+                <div class="time-input">
+                    <label for="minutes">Minutes</label>
+                    <input type="number" v-model="minutes" name="time_m" id="min" max="59" min="0" required>
+                </div>
+                <!--                <input v-model="newTimer" placeholder="timer hours" type="number" required>-->
+                
+                
+                <label for="medication">Medication</label>
+                <input v-model="newMedication" placeholder="Medication" name="medication" type="text" required>
+                <label for="dose">Dosage</label>
+                <input v-model="newDose" name="dose" placeholder="Dose" type="text">
+                <label for="directions">Directions</label>
+                <input v-model="newDosage" name="directions>" placeholder="Directions" type="text">
+                <div class="row">
+                    <button @click="addTimer">Add Timer</button></div>
             </div>
+
             <!--            id="timers"-->
-            <div class="lg-12 small-1" id="timers">
+            <div class="list">
+                <div v-for="medication in medications">
+                    <input type="checkbox" v-model="medication.checked">
+                    <h2>{{ medication.timer }}</h2>
+                    <h3>{{ medication.name }}</h3>
+                    <p>{{ medication.dose }}</p>
+                    <p>{{ medication.dosage }}</p>
+                    <hr>
+                </div>
+                <!--
                 <table class="lg-12 small-1">
                     <thead>
                         <tr>
@@ -78,6 +102,7 @@
                         </tr>
                     </tbody>
                 </table>
+-->
             </div>
             <!--
             <ul>
@@ -94,28 +119,4 @@
         </div>
     </div>
 
-    <!--
-    <div id="app2">
-        <div class="container">
-            <h1>Your Medications</h1>
-            <ul>
-                <li v-for="medication in medications">{{ medication.name }}</li>
-            </ul>
-            <table>
-                <thead>
-                    <th>Name</th>
-                    <th>Dosage</th>
-                    <th>Quantity</th>
-                    <th>Refills</th>
-                </thead>
-                <tbody>
-                    <td v-for="medication in medications">
-                        <tr>{{ medication.name }}</tr>
-                    </td>
-                </tbody>
-            </table>
-        </div>
-    </div>
--->
-    
 </body></html>
