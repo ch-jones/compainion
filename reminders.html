@@ -37,38 +37,56 @@
 
 <body>
 
-    <div id="app" v-bind:style="{ backgroundColor: painLvls[myValue].color }">
-        <div class="top-nav">
+    <div id="app">
+        <nav class="top-nav">
             <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
             <a href="body-painmap.html"><i class="fas fa-comment-medical"></i><span>Rate</span></a>
             <a href="history.html"><i class="fas fa-chart-bar"></i><span>History</span></a>
             <a class="active" href="reminders.html"><i class="fas fa-clock"></i><span>Reminders</span></a>
-        </div>
+        </nav>
         <div class="container">
             <header>
                 <h1>Reminders</h1>
             </header>
-
+            <timer :time="prettyTime"></timer>
+            <!--        <h2 :time="prettyTime">{{ time | prettify }}</h2>-->
+            <!--        <timer-setup v-if="!time" @set-time="setTime"></timer-setup>-->
+            <timer-setup v-if="!time" @set-time="setTime"></timer-setup>
+            
+            <modal v-if="showModal" @close="showModal = false">
+                <h1 slot="header">{{ timer }} </h1>
+                <p slot="body">Select your pain level on the slider and draw where it hurts below.</p>
+            </modal>
+            
+            <div v-if="time">
+                <button v-if="!isRunning" @click="start">Start</button>
+                <button v-if="isRunning" @click="stop">Stop</button>
+                <button @click="reset">Reset</button>
+            </div>
             <div class="input-group">
+                <!--
                 <div class="time-input">
                     <label for="hours">Hours</label>
-                        <input type="number" v-model="hours" name="time_h" id="hours" min="0" max="59" required>
-                    </div>
+                    <input type="number" v-model="hours" name="time_h" id="hours" min="0" max="59" required>
+                </div>
                 <div class="time-input">
                     <label for="minutes">Minutes</label>
                     <input type="number" v-model="minutes" name="time_m" id="min" max="59" min="0" required>
                 </div>
+-->
                 <!--                <input v-model="newTimer" placeholder="timer hours" type="number" required>-->
-                
-                
-                <label for="medication">Medication</label>
-                <input v-model="newMedication" placeholder="Medication" name="medication" type="text" required>
-                <label for="dose">Dosage</label>
-                <input v-model="newDose" name="dose" placeholder="Dose" type="text">
-                <label for="directions">Directions</label>
-                <input v-model="newDosage" name="directions>" placeholder="Directions" type="text">
-                <div class="row">
-                    <button @click="addTimer">Add Timer</button></div>
+
+                <div class="med-input">
+                    <label for="medication">Medication</label>
+                    <input v-model="newMedication" placeholder="Medication" name="medication" type="text" required>
+                    <label for="dose">Dosage</label>
+                    <input v-model="newDose" name="dose" placeholder="Dose" type="text">
+                    <label for="directions">Directions</label>
+                    <input v-model="newDosage" name="directions>" placeholder="Directions" type="text">
+                    <button @click="addTimer">Add Timer</button>
+                </div>
+
+
             </div>
 
             <!--            id="timers"-->

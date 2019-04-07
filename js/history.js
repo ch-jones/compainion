@@ -17,17 +17,17 @@ function setup() {
     myCanvas.parent('humanBody');
 
     //select buttons from DOM and assign functions
-    resetButton = select('#resetButton');
-    resetButton.mousePressed(resetSketch);
-    
-    saveButton = select('#savePainMap');
-    saveButton.mousePressed(downloadPainMap);
-
-    slider = select('#color-slider');
+//    resetButton = select('#resetButton');
+//    resetButton.mousePressed(resetSketch);
+//    
+//    saveButton = select('#savePainMap');
+//    saveButton.mousePressed(downloadPainMap);
+//
+    slider = select('#history-slider');
 }
 
 function draw() {
-    myValue = slider.value();
+    dateValue = slider.value();
     //console.log(val);
     
     //draw pain circles when mouse is pressed
@@ -91,26 +91,10 @@ function circles() {
     }
 }
 
-function downloadPainMap() {
-    //save pain map as png with timestamp in filename
-    saveCanvas('Body Pain Map ' + timestamp, 'png');
-}
-
-function mousePressed() {
-    timestamp = new Date();
-    //console.log(timestamp);
-}
-
 function mousePosition() {
     //console.log(mouseX + " " + mouseY);
     positions.push(timestamp, {myValue, mouseX, mouseY});
     //console.log(positions);
     //localStorage.setItem("painLocation", positions);
     localStorage.setItem('storeObj', JSON.stringify(positions));
-}
-
-function resetSketch() {
-    clear();
-    positions = [];
-    //console.log("RESET ME");
 }

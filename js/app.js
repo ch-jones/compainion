@@ -1,76 +1,127 @@
-// Define a new component called modal
-Vue.component('modal', {
-    template: '#modal-template'
+var getObject = JSON.parse(localStorage.getItem('storeObj'));
+
+// Define new components
+Vue.component('widget', {
+    template: ''
 });
 
-let timerSetup = {
-    template: `
-	<form>
-		 <label for="min">Minutes<br />
-		 <input type="number" v-model="minutes" name="time_m" id="min" min="0" max="59">
-		 </label>
-		 <label for="sec">Seconds<br />
-			  <input type="number" v-model="seconds" name="time_s" id="sec" max="59" min="0">
-		 </label>
-		 <button type="button" @click="sendTime">Set time</button>
-	</form>`,
-    data() {
-        return {
-            minutes: 0,
-            seconds: 0
-        };
+Vue.component('modal', {
+    template: '#modal-template',
+    template: `<transition name="modal">
+                    <div class="modal-mask">
+                      <div class="modal-wrapper">
+                        <div class="modal-container">
 
+                          <div class="modal-header">
+                            <slot name="header">
+                              default header
+                            </slot>
+                          </div>
+
+                          <div class="modal-body">
+                            <slot name="body">
+                              default body
+                            </slot>
+                          </div>
+
+                          <div class="modal-footer">
+                            <slot name="footer">
+                              <button class="ghost-button" @click="$emit('close')">
+                                Don't show this message again
+                              </button>
+                              <button class="modal-default-button" @click="$emit('close')">
+                                OK
+                              </button>
+                            </slot>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </transition>`
+});
+
+Vue.component('timerSetup', {
+    data: function () {
+        return {
+            hours: 0,
+            minutes: 0,
+            //seconds: 0
+        }
     },
+    template: `<form>
+                    <label for="hours">Hours<br/>
+                    <input type="number" v-model="hours" name="time_h" id="hours" min="0">
+                    </label>
+                     <label for="min">Minutes<br />
+                     <input type="number" v-model="minutes" name="time_m" id="min" min="0" max="59">
+                     </label>
+                     <button type="button" @click="sendTime">Set time</button>
+                </form>`,
     methods: {
         sendTime() {
             this.$emit('set-time', {
-                minutes: this.minutes,
-                seconds: this.seconds
+                hours: this.hours,
+                minutes: this.minutes
+                //seconds: this.seconds
             });
         }
     }
-};
+});
 
-let Timer = {
-    template: `
-		 <div class="timer">{{ time | prettify }}</div>
-	`,
+Vue.component('timer', {
+    template: `<div class="timer">{{ time | prettify }}</div>`,
     props: ['time'],
     filters: {
         prettify: function (value) {
             let data = value.split(':');
-            let minutes = data[0];
-            let seconds = data[1];
+            let hours = data[0];
+            let minutes = data[1];
+            //let seconds = data[2];
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
             if (minutes < 10) {
                 minutes = "0" + minutes;
             }
-            if (seconds < 10) {
-                seconds = "0" + seconds;
-            }
-            return minutes + ":" + seconds;
+//            if (seconds < 10) {
+//                seconds = "0" + seconds;
+//            }
+            //                    if (seconds == 60) {
+            //                        seconds = "00";
+            //                    }
+            return hours + ":" + minutes;
         }
     }
-};
+});
 
 // Create Vue app
 const app = new Vue({
     el: '#app',
     components: {
-        'timer-setup': timerSetup,
-        'timer': Timer
+//        'timer-setup': timerSetup,
+//        'timer': Timer
     },
     data: {
         //        user: [
         //            { firstName: 'Darnell' },
         //            { lastName: 'Williams' }
         //        ],
+
+        // timer data
+        history: JSON.parse(localStorage.getItem('storeObj')),
         isRunning: false,
         minutes: 0,
-        seconds: 0,
+        //seconds: 0,
         time: 0,
         timer: null,
+        sound: new Audio("http://s1download-universal-soundbank.com/wav/nudge.wav"),
+
+        // modal data
         showModal: false,
         stopModal: false,
+        timerModal: false,
+        
+        //user info
         userInfo: [
             {
                 firstName: 'Darnell'
@@ -175,9 +226,9 @@ const app = new Vue({
     computed: {
         prettyTime() {
             let time = this.time / 60;
-            let minutes = parseInt(time);
-            let seconds = Math.round((time - minutes) * 60);
-            return minutes + ":" + seconds;
+            let hours = parseInt(time);
+            let minutes = Math.round((time - hours) * 60);
+            return hours + ":" + minutes;
         }
     },
 
@@ -191,9 +242,10 @@ const app = new Vue({
                     } else {
                         clearInterval(this.timer);
                         this.sound.play();
+                        alert("Hello! I am an alert box!");
                         this.reset();
                     }
-                }, 1000);
+                }, (1000 * 60));
             }
         },
         stop() {
@@ -204,11 +256,11 @@ const app = new Vue({
         reset() {
             this.stop();
             this.time = 0;
-            this.seconds = 0;
+            //this.seconds = 0;
             this.minutes = 0;
         },
         setTime(payload) {
-            this.time = payload.minutes * 60 + payload.seconds;
+            this.time = payload.hours * 60 + payload.minutes;
         },
         addTimer: function () {
             var timer = this.newTimer;
@@ -230,13 +282,17 @@ const app = new Vue({
             }
         }
     },
+
     mounted() {
         if (localStorage.myValue) this.myValue = localStorage.myValue;
+        //if (localStorage.stopModal) this.stopModal = localStorage.stopModal;
     },
 
     watch: {
         myValue(newValue) {
             localStorage.myValue = newValue;
         }
-    }
+//        stopModal(stopModal) {
+//            localStorage.stopModal = this.stopModal;
+        }
 });
