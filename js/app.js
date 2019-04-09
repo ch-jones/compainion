@@ -1,5 +1,5 @@
-var getObject = JSON.parse(localStorage.getItem('storeObj'));
-
+//var getObject = JSON.parse(localStorage.getItem('storeObj'));
+let optionsKey;
 // Define new components
 Vue.component('widget', {
     template: ''
@@ -97,18 +97,17 @@ Vue.component('timer', {
 // Create Vue app
 const app = new Vue({
     el: '#app',
-    components: {
-//        'timer-setup': timerSetup,
-//        'timer': Timer
-    },
     data: {
         //        user: [
         //            { firstName: 'Darnell' },
         //            { lastName: 'Williams' }
         //        ],
-
+        optionsKey: 0,
+        
+        options: JSON.parse(localStorage.getItem(optionsKey)),
+        selected: '',
+        //prettyDate: new Date(this.history),
         // timer data
-        history: JSON.parse(localStorage.getItem('storeObj')),
         isRunning: false,
         minutes: 0,
         //seconds: 0,
@@ -229,7 +228,10 @@ const app = new Vue({
             let hours = parseInt(time);
             let minutes = Math.round((time - hours) * 60);
             return hours + ":" + minutes;
-        }
+        },
+//        prettyDate() {
+//            let date = new Date(this.history.timestamp);
+//        }
     },
 
     methods: {

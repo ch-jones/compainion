@@ -34,8 +34,6 @@
     <script src="js/vue.js" defer></script>
     <script src="js/app.js" defer></script>
 
-    <!-- Chart.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </head>
 
 <body>
@@ -55,21 +53,51 @@
                 <p>👋 Hi, Darnell </p>
             </div>
             <header>
-                <p>How are you feeling today?</p>
+                <h1>How are you feeling today?</h1>
             </header>
+            
+            <div class="widget">
+                <div class="widget-header">
+                    <slot name="header">
+                        <h2>Pain History</h2>
+                        <hr>
+                    </slot>
+                </div>
+                <div class="widget-body">
+                    <slot name="body">
+                        <h3 v-if="history">History</h3>
+                        <h3 v-else>No previous pain records.</h3>
+                    </slot>
+                </div>
+
+            </div>
+
+            <div class="widget">
+                <div class="widget-header">
+                    <slot name="header">
+                        <h2>Medication Reminders</h2>
+                        <hr>
+                    </slot>
+                </div>
+                <div class="widget-body">
+                    <slot name="body">
+                        <div v-for="medication in medications" class="list">
+<!--                    <input type="checkbox" v-model="medication.checked">-->
+                    <h2>{{ medication.timer }}</h2>
+                    <label class="checkbox-container"><h3>{{ medication.name }}</h3>
+                        <input type="checkbox" v-model="medication.checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <hr>
+                </div>
+                    </slot>
+                </div>
+
+            </div>
+            
+            
         </div>
     </div>
+</body>
 
-    <!--
-    <canvas id="myChart" width="400" height="400"></canvas>
-    <script>
-        var ctx = document.getElementById('myChart');
-        var myLineChart = new Chart(ctx, {
-            type: 'line',
-            data: data,
-            options: options
-        });
-        
-    </script>
--->
-</body></html>
+</html>

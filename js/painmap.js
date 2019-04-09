@@ -4,23 +4,24 @@ var timestamp;
 let positions = [];
 let myCanvas, photo, maskImage, myValue;
 
-
 function preload() {
     //preload the body image
     maskImage = loadImage('uploads/body-front.png');
-    //maskImage = loadImage('uploads/body-back.png');
 }
 
 function setup() {
     //create canvas
     var myCanvas = createCanvas(147, 412);
     myCanvas.parent('humanBody');
+//    timestamp = Number(new Date());
+    timestamp = new Date();
 
     //select buttons from DOM and assign functions
     resetButton = select('#resetButton');
     resetButton.mousePressed(resetSketch);
     
     saveButton = select('#savePainMap');
+    //saveButton.mousePressed(downloadPainMap);
     saveButton.mousePressed(downloadPainMap);
 
     slider = select('#color-slider');
@@ -93,24 +94,27 @@ function circles() {
 
 function downloadPainMap() {
     //save pain map as png with timestamp in filename
-    saveCanvas('Body Pain Map ' + timestamp, 'png');
+    //saveCanvas('Body Pain Map ' + timestamp, 'png');
 }
 
 function mousePressed() {
-    timestamp = new Date();
-    //console.log(timestamp);
+    //timestamp = new Date();
+    //timestamp = Number(new Date());
+    //Number(timestamp);
+    console.log(timestamp);
 }
 
 function mousePosition() {
     //console.log(mouseX + " " + mouseY);
-    positions.push(timestamp, {myValue, mouseX, mouseY});
-    //console.log(positions);
+    positions.push({timestamp, myValue, mouseX, mouseY});
+    console.log(positions);
     //localStorage.setItem("painLocation", positions);
-    localStorage.setItem('storeObj', JSON.stringify(positions));
+    localStorage.setItem(timestamp, JSON.stringify(positions));
 }
 
 function resetSketch() {
     clear();
     positions = [];
+    //timestamp = Number(new Date());
     //console.log("RESET ME");
 }

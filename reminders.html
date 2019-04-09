@@ -52,12 +52,12 @@
             <!--        <h2 :time="prettyTime">{{ time | prettify }}</h2>-->
             <!--        <timer-setup v-if="!time" @set-time="setTime"></timer-setup>-->
             <timer-setup v-if="!time" @set-time="setTime"></timer-setup>
-            
+
             <modal v-if="showModal" @close="showModal = false">
                 <h1 slot="header">{{ timer }} </h1>
                 <p slot="body">Select your pain level on the slider and draw where it hurts below.</p>
             </modal>
-            
+
             <div v-if="time">
                 <button v-if="!isRunning" @click="start">Start</button>
                 <button v-if="isRunning" @click="stop">Stop</button>
@@ -77,11 +77,11 @@
                 <!--                <input v-model="newTimer" placeholder="timer hours" type="number" required>-->
 
                 <div class="med-input">
-                    <label for="medication">Medication</label>
+                    <label for="medication"><i class="fas fa-prescription-bottle"></i>Medication</label>
                     <input v-model="newMedication" placeholder="Medication" name="medication" type="text" required>
-                    <label for="dose">Dosage</label>
+                    <label for="dose"><i class="fas fa-tablets"></i>Dosage</label>
                     <input v-model="newDose" name="dose" placeholder="Dose" type="text">
-                    <label for="directions">Directions</label>
+                    <label for="directions"><i class="fas fa-prescription"></i>Directions</label>
                     <input v-model="newDosage" name="directions>" placeholder="Directions" type="text">
                     <button @click="addTimer">Add Timer</button>
                 </div>
@@ -92,11 +92,16 @@
             <!--            id="timers"-->
             <div class="list">
                 <div v-for="medication in medications">
-                    <input type="checkbox" v-model="medication.checked">
+<!--                    <input type="checkbox" v-model="medication.checked">-->
                     <h2>{{ medication.timer }}</h2>
-                    <h3>{{ medication.name }}</h3>
-                    <p>{{ medication.dose }}</p>
-                    <p>{{ medication.dosage }}</p>
+                    <label class="checkbox-container"><h3>{{ medication.name }}</h3>
+                        <input type="checkbox" v-model="medication.checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                   <p><i class="fas fa-pills"></i>{{ medication.dose }}</p>
+                    
+                    <p><i class="fas fa-prescription"></i>{{ medication.dosage }}</p>
                     <hr>
                 </div>
                 <!--
@@ -137,4 +142,6 @@
         </div>
     </div>
 
-</body></html>
+</body>
+
+</html>

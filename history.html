@@ -32,7 +32,7 @@
     <!-- Vue.JS libraries and scripts -->
     <script src="js/vue.js" defer></script>
     <script src="js/app.js" defer></script>
-    
+
     <!-- p5.js libraries and scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
     <script src="./js/p5.dom.js"></script>
@@ -50,13 +50,19 @@
         </nav>
         <div class="container">
             <div id='humanBody'></div>
-<!--            <p>{{ history }}</p>-->
-            {{ history[0] }}<input class="slider shadow lg-12 small-1" id="history-slider" type="range" step="1" value="0"> {{ history.length }}
+            <!--            <input class="slider" id="history-slider" type="range" min="1554690379311" max="1769835600000" step="1" value="1554735531416" v-model="history">-->
+            <h1>{{ options }}</h1>
+            <input class="slider" id="history-slider" type="range" min="0" max="10" step="1" value="0" v-model="optionsKey">
+            <!--            <input type="date" value="2019-04-07">-->
+            <span>{{ selected }}</span>
+<!--
+                <select v-model="selected" class="custom-select">
+                    <option v-for="option in options" v-bind:value="option.timestamp">
+                        {{ option.timestamp }}
+                    </option>
+                </select>
+-->
         </div>
     </div>
-    
-    <script>
-//        var getObject = JSON.parse(localStorage.getItem('storeObj'));
-    </script>
-</body>
-</html>
+
+</body></html>
