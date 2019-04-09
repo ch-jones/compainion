@@ -34,6 +34,9 @@
     <script src="js/vue.js" defer></script>
     <script src="js/app.js" defer></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+    <script src="./js/p5.dom.js"></script>
+<!--    <script src="./js/widgets.js"></script>-->
 </head>
 
 <body>
@@ -56,6 +59,7 @@
                 <h1>How are you feeling today?</h1>
             </header>
             
+<!--
             <div class="widget">
                 <div class="widget-header">
                     <slot name="header">
@@ -67,10 +71,12 @@
                     <slot name="body">
                         <h3 v-if="history">History</h3>
                         <h3 v-else>No previous pain records.</h3>
+                        <div id="history-widget"></div>
                     </slot>
                 </div>
 
             </div>
+-->
 
             <div class="widget">
                 <div class="widget-header">

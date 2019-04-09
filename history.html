@@ -49,19 +49,12 @@
             <a href="reminders.html"><i class="fas fa-clock"></i><span>Reminders</span></a>
         </nav>
         <div class="container">
-            <div id='humanBody'></div>
+            <div id="humanBody"></div>
             <!--            <input class="slider" id="history-slider" type="range" min="1554690379311" max="1769835600000" step="1" value="1554735531416" v-model="history">-->
-            <h1>{{ options }}</h1>
-            <input class="slider" id="history-slider" type="range" min="0" max="10" step="1" value="0" v-model="optionsKey">
+<!--            <h1 v-show="keyName != 'myValue'">{{ keyName }}</h1>-->
+<!--            <h1>{{ optionsKey }}</h1>-->
+            <input class="slider" id="history-slider" type="range" min="0" max="10" step="1" value="0" v-model="optionsKey" onchange="updateImage()">
             <!--            <input type="date" value="2019-04-07">-->
-            <span>{{ selected }}</span>
-<!--
-                <select v-model="selected" class="custom-select">
-                    <option v-for="option in options" v-bind:value="option.timestamp">
-                        {{ option.timestamp }}
-                    </option>
-                </select>
--->
         </div>
     </div>
 

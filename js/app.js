@@ -1,10 +1,18 @@
 //var getObject = JSON.parse(localStorage.getItem('storeObj'));
 let optionsKey;
+//let keyName = JSON.parse(localStorage.getItem(optionsKey));
+
 // Define new components
 Vue.component('widget', {
     template: ''
 });
 
+//Vue.component('slider', {
+//    data: function() {
+//        return localStorage.length - 1;
+//    },
+//    template: `<input class="slider" id="history-slider" type="range" min="0" max="10" step="1" value="0" v-model="optionsKey" onchange="updateImage()">`
+//})
 Vue.component('modal', {
     template: '#modal-template',
     template: `<transition name="modal">
@@ -102,10 +110,9 @@ const app = new Vue({
         //            { firstName: 'Darnell' },
         //            { lastName: 'Williams' }
         //        ],
+        history: false,
         optionsKey: 0,
-        
-        options: JSON.parse(localStorage.getItem(optionsKey)),
-        selected: '',
+        keyName: localStorage.key(0),
         //prettyDate: new Date(this.history),
         // timer data
         isRunning: false,
@@ -136,19 +143,19 @@ const app = new Vue({
         medications: [{
             name: 'Acetaminophen',
             dose: '500 mg tablet',
-            timer: 4,
+            timer: '4:00',
             dosage: '2 caplets every 4-6 hours while symptoms last',
             checked: false,
         }, {
             name: 'Oxycodone',
             dose: '9 mg tablet',
-            timer: 5,
+            timer: '5:00',
             dosage: '1 tablet every 5-6 hours as needed',
             checked: false,
         }, {
             name: 'Amoxicillin',
             dose: '2000 mg tablet',
-            timer: 12,
+            timer: '12:00',
             doseage: '1 tablet every 12 hours',
             checked: false
         }],
@@ -263,8 +270,6 @@ const app = new Vue({
         },
         setTime(payload) {
             this.time = payload.hours * 60 + payload.minutes;
-        },
-        addTimer: function () {
             var timer = this.newTimer;
             var name = this.newMedication.trim();
             var dose = this.newDose.trim();
@@ -282,12 +287,32 @@ const app = new Vue({
                 this.dose = '';
                 this.dosage = '';
             }
-        }
+        },
+//        addTimer: function () {
+//            var timer = this.newTimer;
+//            var name = this.newMedication.trim();
+//            var dose = this.newDose.trim();
+//            var dosage = this.newDosage.trim();
+//            if (name) {
+//                this.medications.push({
+//                    timer: timer,
+//                    name: name,
+//                    dose: dose,
+//                    dosage: dosage,
+//                    checked: false
+//                });
+//                this.newTimer = '';
+//                this.newMedication = '';
+//                this.dose = '';
+//                this.dosage = '';
+//            }
+//        }
     },
 
     mounted() {
         if (localStorage.myValue) this.myValue = localStorage.myValue;
         //if (localStorage.stopModal) this.stopModal = localStorage.stopModal;
+        if (localStorage) history = true;
     },
 
     watch: {
@@ -296,5 +321,5 @@ const app = new Vue({
         }
 //        stopModal(stopModal) {
 //            localStorage.stopModal = this.stopModal;
-        }
+        },
 });

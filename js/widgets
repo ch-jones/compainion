@@ -29,8 +29,9 @@ function setup() {
 function draw() {
     a = slider.value();
     //history = window.localStorage.key(0);
+    
     data = JSON.parse(localStorage.getItem(localStorage.key(a)));
-    //console.log(data);
+
     //draw pain circles
     circlesHistory();
 
@@ -39,8 +40,9 @@ function draw() {
 }
 
 function mouseReleased() {
-    //var KeyName = window.localStorage.key(a);
-    //console.log(KeyName);
+    //switch drawing boolean when mouse is released
+    var KeyName = window.localStorage.key(a);
+    console.log(KeyName);
     //console.log(data);
 }
 
