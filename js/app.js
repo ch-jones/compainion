@@ -64,14 +64,6 @@ Vue.component('timerSetup', {
                      <label for="min">Minutes<br />
                      <input type="number" v-model="minutes" name="time_m" id="min" min="0" max="59">
                      </label>
-                    
-                    <div class="med-input">
-                    <label for="medication"><i class="fas fa-prescription-bottle"></i>Medication</label>
-                    <input v-model="newMedication" placeholder="Medication" name="medication" type="text" required>
-                    <label for="dose"><i class="fas fa-tablets"></i>Dosage</label>
-                    <input v-model="newDose" name="dose" placeholder="Dose" type="text">
-                    <label for="directions"><i class="fas fa-prescription"></i>Directions</label>
-                    <input v-model="newDosage" name="directions>" placeholder="Directions" type="text">
 <!--                    <button @click="addTimer">Add Timer</button>-->
                 </div>
                      <button type="button" @click="sendTime">Set time</button>
