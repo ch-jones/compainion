@@ -1,6 +1,6 @@
 //var getObject = JSON.parse(localStorage.getItem('storeObj'));
-let optionsKey = document.getElementById("history-slider").value;
-console.log(optionsKey);
+//let optionsKey = document.getElementById("history-slider").value;
+//console.log(optionsKey);
 //let keyName = JSON.parse(localStorage.getItem(optionsKey));
 
 // Define new components
@@ -123,7 +123,7 @@ const app = new Vue({
         //        ],
         history: false,
         //optionsKey: 0,
-        keyName: localStorage.key(optionsKey),
+        //keyName: localStorage.key(optionsKey),
         //prettyDate: new Date(this.history),
         // timer data
         isRunning: false,
