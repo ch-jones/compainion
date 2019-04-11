@@ -53,9 +53,15 @@
             <!--            <input class="slider" id="history-slider" type="range" min="1554690379311" max="1769835600000" step="1" value="1554735531416" v-model="history">-->
 <!--            <h1 v-show="keyName != 'myValue'">{{ keyName }}</h1>-->
 <!--            <h1>{{ optionsKey }}</h1>-->
-            <input class="slider" id="history-slider" type="range" min="0" max="10" step="1" value="0" v-model="optionsKey" onchange="updateImage()">
+            <h1>{{ keyName }}</h1>
+            <input class="slider" id="history-slider" type="range" min="0" max="10" step="1" value="0" onchange="updateImage()">
             <!--            <input type="date" value="2019-04-07">-->
         </div>
     </div>
 
-</body></html>
+    <script>
+        let historySlider = document.getElementById('history-slider');
+        historySlider.max = localStorage.length - 2;
+    </script>
+</body>
+</html>

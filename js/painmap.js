@@ -1,8 +1,6 @@
 let drawing = false;
-//let front = true;
-var timestamp;
 let positions = [];
-let myCanvas, photo, maskImage, myValue;
+let myCanvas, photo, maskImage, timestamp, myValue;
 
 function preload() {
     //preload the body image
@@ -106,10 +104,12 @@ function mousePressed() {
 
 function mousePosition() {
     //console.log(mouseX + " " + mouseY);
-    positions.push({timestamp, myValue, mouseX, mouseY});
-    console.log(positions);
-    //localStorage.setItem("painLocation", positions);
-    localStorage.setItem(timestamp, JSON.stringify(positions));
+    if (mouseX > 0 && mouseX < 147 && mouseY > 0 && mouseY < 412) {
+        positions.push({timestamp, myValue, mouseX, mouseY});
+        console.log(positions);
+        //localStorage.setItem("painLocation", positions);
+        localStorage.setItem(timestamp, JSON.stringify(positions));
+    }
 }
 
 function resetSketch() {

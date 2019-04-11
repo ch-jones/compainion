@@ -1,5 +1,6 @@
 //var getObject = JSON.parse(localStorage.getItem('storeObj'));
-let optionsKey;
+let optionsKey = document.getElementById("history-slider").value;
+console.log(optionsKey);
 //let keyName = JSON.parse(localStorage.getItem(optionsKey));
 
 // Define new components
@@ -63,6 +64,16 @@ Vue.component('timerSetup', {
                      <label for="min">Minutes<br />
                      <input type="number" v-model="minutes" name="time_m" id="min" min="0" max="59">
                      </label>
+                    
+                    <div class="med-input">
+                    <label for="medication"><i class="fas fa-prescription-bottle"></i>Medication</label>
+                    <input v-model="newMedication" placeholder="Medication" name="medication" type="text" required>
+                    <label for="dose"><i class="fas fa-tablets"></i>Dosage</label>
+                    <input v-model="newDose" name="dose" placeholder="Dose" type="text">
+                    <label for="directions"><i class="fas fa-prescription"></i>Directions</label>
+                    <input v-model="newDosage" name="directions>" placeholder="Directions" type="text">
+<!--                    <button @click="addTimer">Add Timer</button>-->
+                </div>
                      <button type="button" @click="sendTime">Set time</button>
                 </form>`,
     methods: {
@@ -111,8 +122,8 @@ const app = new Vue({
         //            { lastName: 'Williams' }
         //        ],
         history: false,
-        optionsKey: 0,
-        keyName: localStorage.key(0),
+        //optionsKey: 0,
+        keyName: localStorage.key(optionsKey),
         //prettyDate: new Date(this.history),
         // timer data
         isRunning: false,

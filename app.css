@@ -1,4 +1,9 @@
 /* Site Wide Styles */
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
 html,
 body {
     margin: 0;
@@ -8,6 +13,10 @@ body {
 body {
     font-family: 'Work Sans', sans-serif;
     background-color: #FAFAFA;
+/*    overflow: hidden;*/
+}
+::-webkit-scrollbar {
+display: none;
 }
 
 #app {
@@ -31,7 +40,7 @@ body {
     width: 100%;
     height: 76px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
-    z-index: 2;
+    z-index: 100;
 }
 
 .top-nav a {
@@ -99,6 +108,10 @@ label i, p i {
 /*    margin-top 1rem;*/
     padding-top: 1rem;
     top: 0;
+}
+
+.history-widget, .history-widget canvas {
+    margin: 0 auto;
 }
 /* Modal Styles */
 .modal-mask {
@@ -200,7 +213,7 @@ button i {
 */
 .profile-bar {
     width: 100vw;
-    z-index: 100;
+    z-index: 2;
     display: grid;
     grid-template-columns: auto 7fr;
     background-color: #373737;
@@ -304,6 +317,8 @@ header h1 {
 .value {
     margin: 0.25rem 0 0 0;
     /*    line-height: 0rem;*/
+    border-radius: 1rem;
+ 
     transition: all 0.7s ease-out;
 }
 
@@ -493,7 +508,11 @@ input[type=number] {
     border-radius: 6px;
     box-sizing: border-box;
 }
-
+.timer {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
 .time-input {
     grid-column: span 1;
     /*    width: 50%;*/
@@ -538,11 +557,15 @@ input[type=number] {
         grid-column: 1 / 2;
         /*        grid-row-end: span 12;*/
     }
-    header {
-        margin-top: 60px;
+    #header-home {
+        margin-top: 80px;
     }
     
     h1 {
         font-size: 1.5rem;
+    }
+    
+    .value {
+       max-width: 350px;
     }
 }

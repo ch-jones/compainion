@@ -67,17 +67,8 @@
                 <!--                <input v-model="newTimer" placeholder="timer hours" type="number" required>-->
                 <timer :time="prettyTime"></timer>
             
-                <div class="med-input">
-                    <label for="medication"><i class="fas fa-prescription-bottle"></i>Medication</label>
-                    <input v-model="newMedication" placeholder="Medication" name="medication" type="text" required>
-                    <label for="dose"><i class="fas fa-tablets"></i>Dosage</label>
-                    <input v-model="newDose" name="dose" placeholder="Dose" type="text">
-                    <label for="directions"><i class="fas fa-prescription"></i>Directions</label>
-                    <input v-model="newDosage" name="directions>" placeholder="Directions" type="text">
-<!--                    <button @click="addTimer">Add Timer</button>-->
-                </div>
+                
                 <timer-setup v-if="!time" @set-time="setTime"></timer-setup>
-
 
             </div>
 

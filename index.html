@@ -36,7 +36,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
     <script src="./js/p5.dom.js"></script>
-<!--    <script src="./js/widgets.js"></script>-->
+    <script src="./js/widgets.js"></script>
 </head>
 
 <body>
@@ -56,10 +56,9 @@
                 <p>👋 Hi, Darnell </p>
             </div>
             <header>
-                <h1>How are you feeling today?</h1>
+                <h1 id="header-home">How are you feeling today?</h1>
             </header>
             
-<!--
             <div class="widget">
                 <div class="widget-header">
                     <slot name="header">
@@ -69,14 +68,14 @@
                 </div>
                 <div class="widget-body">
                     <slot name="body">
+<!--
                         <h3 v-if="history">History</h3>
                         <h3 v-else>No previous pain records.</h3>
+-->
                         <div id="history-widget"></div>
                     </slot>
                 </div>
-
             </div>
--->
 
             <div class="widget">
                 <div class="widget-header">

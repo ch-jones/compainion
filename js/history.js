@@ -1,5 +1,4 @@
-var timestamp;
-let myCanvas, photo, maskImage, myValue, a;
+let myCanvas, photo, maskImage, myValue, timestamp, a;
 let circleX, circleY;
 //let history = JSON.parse(localStorage.getItem('storeObj'));
 let history;
